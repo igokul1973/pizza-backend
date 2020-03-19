@@ -1,51 +1,89 @@
-type User {
-	id: ID!
-	name: String
-	friends: [User] @relation(name: "FRIENDS", direction: "BOTH")
-	reviews: [Review] @relation(name: "WROTE", direction: "OUT")
-	avgStars: Float
-		@cypher(
-			statement: "MATCH (this)-[:WROTE]->(r:Review) RETURN toFloat(avg(r.stars))"
-		)
-	numReviews: Int
-		@cypher(statement: "MATCH (this)-[:WROTE]->(r:Review) RETURN COUNT(r)")
-	recommendations(first: Int = 3): [Business]
-		@cypher(
-			statement: "MATCH (this)-[:WROTE]->(r:Review)-[:REVIEWS]->(:Business)<-[:REVIEWS]-(:Review)<-[:WROTE]-(:User)-[:WROTE]->(:Review)-[:REVIEWS]->(rec:Business) WHERE NOT EXISTS( (this)-[:WROTE]->(:Review)-[:REVIEWS]->(rec) )WITH rec, COUNT(*) AS num ORDER BY num DESC LIMIT $first RETURN rec"
-		)
-}
-
-type Business {
-	id: ID!
-	name: String
-	address: String
-	city: String
-	state: String
-	avgStars: Float
-		@cypher(
-			statement: "MATCH (this)<-[:REVIEWS]-(r:Review) RETURN coalesce(avg(r.stars),0.0)"
-		)
-	reviews: [Review] @relation(name: "REVIEWS", direction: "IN")
-	categories: [Category] @relation(name: "IN_CATEGORY", direction: "OUT")
-}
-
-type Review {
-	id: ID!
-	stars: Int
-	text: String
-	date: Date
-	business: Business @relation(name: "REVIEWS", direction: "OUT")
-	user: User @relation(name: "WROTE", direction: "IN")
-}
-
-type Category {
-	name: ID!
-	businesses: [Business] @relation(name: "IN_CATEGORY", direction: "IN")
-}
+directive @unique on FIELD_DEFINITION | OBJECT | ARGUMENT_DEFINITION
 
 type Query {
-	usersBySubstring(substring: String): [User]
+	customersByPartialPhone(substring: String): [Customer]
 		@cypher(
-			statement: "MATCH (u:User) WHERE u.name CONTAINS $substring RETURN u"
+			statement: "MATCH (c:Customer) WHERE c.phone CONTAINS $substring RETURN c"
 		)
+}
+
+type Customer {
+	id: ID!
+	name: String!
+	phone: String!
+	email: String!
+	password: String!
+	addresses: [CustomerAddress]!
+		@relation(name: "HAS_ADDRESS", direction: "OUT")
+	orders: [Order]! @relation(name: "HAS_ORDERS", direction: "OUT")
+	createdAt: DateTime!
+	updatedAt: DateTime!
+}
+
+type CustomerAddress {
+	id: ID!
+	street: String!
+	city: String!
+	state: String!
+	zip: String!
+	addressCategory: AddressCategory!
+	customer: Customer! @relation(name: "HAS_ADDRESS", direction: "IN")
+}
+
+enum AddressCategory {
+	home
+	work
+	other
+}
+
+type Product {
+	id: ID!
+	name: String!
+	categories: [ProductCategory]!
+		@relation(name: "HAS_PRODUCT_CATEGORIES", direction: "OUT")
+	price: Float!
+	description: String!
+	status: ProductStatus!
+	orderItems: OrderItem @relation(name: "HAS_PRODUCT", direction: "IN")
+	createdAt: DateTime!
+	updatedAt: DateTime!
+}
+
+enum ProductStatus {
+	available
+	not_available
+}
+
+type ProductCategory @unique {
+	id: ID!
+	name: String!
+	products: [Product]
+		@relation(name: "HAS_PRODUCT_CATEGORIES", direction: "IN")
+}
+
+type Order {
+	id: ID!
+	orderItems: [OrderItem] @relation(name: "HAS_ORDER_ITEMS", direction: "OUT")
+	customer: Customer @relation(name: "HAS_ORDERS", direction: "IN")
+	details: String!
+	status: OrderStatusEnum!
+	createdAt: DateTime!
+	updatedAt: DateTime!
+}
+
+enum OrderStatusEnum {
+	ordered
+	delivered
+	cancelled
+}
+
+type OrderItem {
+	product: Product! @relation(name: "HAS_PRODUCT", direction: "OUT")
+	name: String! # Copy from the product on order item's creation
+	quantity: Int!
+	price: Float! # Copy from the product on order item's creation
+	# total - calculable field
+	total: Float
+		@cypher(statement: "MATCH (this) RETURN this.quantity * this.price")
+	order: Order @relation(name: "HAS_ORDER_ITEMS", direction: "IN")
 }
