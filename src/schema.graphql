@@ -1,9 +1,16 @@
 directive @unique on FIELD_DEFINITION | OBJECT | ARGUMENT_DEFINITION
 
 type Query {
-	customersByPartialPhone(substring: String): [Customer]
+	GetCustomersByPartialPhone(substring: String): [Customer]
 		@cypher(
 			statement: "MATCH (c:Customer) WHERE c.phone CONTAINS $substring RETURN c"
+		)
+}
+
+type Mutation {
+	CreateUniqueConstraintForProductCategory: [ProductCategory]
+		@cypher(
+			statement: "CREATE CONSTRAINT ON (e:ProductCategory) ASSERT e.name IS UNIQUE"
 		)
 }
 
@@ -26,13 +33,13 @@ type CustomerAddress {
 	city: String!
 	state: String!
 	zip: String!
-	addressCategory: AddressCategory!
-	customer: Customer! @relation(name: "HAS_ADDRESS", direction: "IN")
+	addressCategory: AddressCategoryEnum!
+	customer: [Customer]! @relation(name: "HAS_ADDRESS", direction: "IN")
 }
 
-enum AddressCategory {
+enum AddressCategoryEnum {
 	home
-	work
+	office
 	other
 }
 
@@ -44,19 +51,18 @@ type Product {
 		@relation(name: "HAS_PRODUCT_CATEGORIES", direction: "OUT")
 	price: Float!
 	description: String!
-	status: ProductStatus!
+	status: ProductStatusEnum!
 	orderItems: OrderItem @relation(name: "HAS_PRODUCT", direction: "IN")
 	createdAt: DateTime!
 	updatedAt: DateTime!
 }
 
-enum ProductStatus {
+enum ProductStatusEnum {
 	available
 	not_available
 }
 
 type ProductCategory @unique {
-	id: ID!
 	name: String!
 	products: [Product]
 		@relation(name: "HAS_PRODUCT_CATEGORIES", direction: "IN")
@@ -66,7 +72,7 @@ type Order {
 	id: ID!
 	orderItems: [OrderItem] @relation(name: "HAS_ORDER_ITEMS", direction: "OUT")
 	customer: Customer @relation(name: "HAS_ORDERS", direction: "IN")
-	details: String!
+	details: String
 	status: OrderStatusEnum!
 	createdAt: DateTime!
 	updatedAt: DateTime!
@@ -79,10 +85,11 @@ enum OrderStatusEnum {
 }
 
 type OrderItem {
+	id: ID!
 	product: Product! @relation(name: "HAS_PRODUCT", direction: "OUT")
 	name: String! # Copy from the product on order item's creation
-	quantity: Int!
 	price: Float! # Copy from the product on order item's creation
+	quantity: Int!
 	# total - calculable field
 	total: Float
 		@cypher(statement: "MATCH (this) RETURN this.quantity * this.price")

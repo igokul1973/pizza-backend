@@ -1,394 +1,369 @@
 export default /* GraphQL */ `
-  mutation {
-    u1: CreateUser(id: "u1", name: "Will") {
-      id
-      name
-    }
-    u2: CreateUser(id: "u2", name: "Bob") {
-      id
-      name
-    }
-    u3: CreateUser(id: "u3", name: "Jenny") {
-      id
-      name
-    }
-    u4: CreateUser(id: "u4", name: "Angie") {
-      id
-      name
-    }
-    b1: CreateBusiness(
-      id: "b1"
-      name: "KettleHouse Brewing Co."
-      address: "313 N 1st St W"
-      city: "Missoula"
-      state: "MT"
-    ) {
-      id
-      name
-    }
-    b2: CreateBusiness(
-      id: "b2"
-      name: "Imagine Nation Brewing"
-      address: "1151 W Broadway St"
-      city: "Missoula"
-      state: "MT"
-    ) {
-      id
-      name
-    }
-    b3: CreateBusiness(
-      id: "b3"
-      name: "Ninja Mike's"
-      address: "Food Truck - Farmers Market"
-      city: "Missoula"
-      state: "MT"
-    ) {
-      id
-      name
-    }
-    b4: CreateBusiness(
-      id: "b4"
-      name: "Market on Front"
-      address: "201 E Front St"
-      city: "Missoula"
-      state: "MT"
-    ) {
-      id
-      name
-    }
-    b5: CreateBusiness(
-      id: "b5"
-      name: "Missoula Public Library"
-      address: "301 E Main St"
-      city: "Missoula"
-      state: "MT"
-    ) {
-      id
-      name
-    }
-    b6: CreateBusiness(
-      id: "b6"
-      name: "Zootown Brew"
-      address: "121 W Broadway St"
-      city: "Missoula"
-      state: "MT"
-    ) {
-      id
-      name
-    }
-    b7: CreateBusiness(
-      id: "b7"
-      name: "Hanabi"
-      address: "723 California Dr"
-      city: "Burlingame"
-      state: "CA"
-    ) {
-      id
-      name
-    }
-    b8: CreateBusiness(
-      id: "b8"
-      name: "Philz Coffee"
-      address: "113 B St"
-      city: "San Mateo"
-      state: "CA"
-    ) {
-      id
-      name
-    }
-    b9: CreateBusiness(
-      id: "b9"
-      name: "Alpha Acid Brewing Company"
-      address: "121 Industrial Rd #11"
-      city: "Belmont"
-      state: "CA"
-    ) {
-      id
-      name
-    }
-    b10: CreateBusiness(
-      id: "b10"
-      name: "San Mateo Public Library Central Library"
-      address: "55 W 3rd Ave"
-      city: "San Mateo"
-      state: "CA"
-    ) {
-      id
-      name
-    }
+	mutation {
+		cucfpc: CreateUniqueConstraintForProductCategory {
+			name
+		}
+		pc1: CreateProductCategory(name: "Pizza") {
+			name
+		}
+		pc2: CreateProductCategory(name: "Soft drink") {
+			name
+		}
 
-    c1: CreateCategory(name: "Coffee") {
-      name
-    }
-    c2: CreateCategory(name: "Library") {
-      name
-    }
-    c3: CreateCategory(name: "Beer") {
-      name
-    }
-    c4: CreateCategory(name: "Restaurant") {
-      name
-    }
-    c5: CreateCategory(name: "Ramen") {
-      name
-    }
-    c6: CreateCategory(name: "Cafe") {
-      name
-    }
-    c7: CreateCategory(name: "Deli") {
-      name
-    }
-    c8: CreateCategory(name: "Breakfast") {
-      name
-    }
-    c9: CreateCategory(name: "Brewery") {
-      name
-    }
+		p1: CreateProduct(
+			id: "p1"
+			name: "Pizza Margerheta"
+			imgUrl: "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg"
+			price: 20.2
+			description: "Excellent pizza exclusively for you"
+			status: available
+			createdAt: { formatted: "2020-03-19T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-03-19T13:11:01.357Z" }
+		) {
+			id
+			name
+		}
+		p2: CreateProduct(
+			id: "p2"
+			name: "Chili pizza"
+			imgUrl: "https://cdn.pixabay.com/photo/2014/05/18/11/25/pizza-346985_960_720.jpg"
+			price: 18.2
+			description: "Hot and tasty - for those from Mexico or environs"
+			status: available
+			createdAt: { formatted: "2020-03-19T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-03-19T13:11:01.357Z" }
+		) {
+			id
+			name
+		}
+		p3: CreateProduct(
+			id: "p3"
+			name: "Pizza Bianca"
+			imgUrl: "https://cdn.pixabay.com/photo/2017/02/15/10/57/pizza-2068272_960_720.jpg"
+			price: 19.2
+			description: "Savory piece of art with tomatoes and our home-made cheese"
+			status: available
+			createdAt: { formatted: "2020-03-19T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-03-19T13:11:01.357Z" }
+		) {
+			id
+			name
+		}
+		p4: CreateProduct(
+			id: "p4"
+			name: "Beefy monster"
+			imgUrl: "https://cdn.pixabay.com/photo/2017/09/30/15/10/pizza-2802332_960_720.jpg"
+			price: 33.7
+			description: "Beef and black olives pizza topped with spinach"
+			status: available
+			createdAt: { formatted: "2020-03-19T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-03-19T13:11:01.357Z" }
+		) {
+			id
+			name
+		}
+		p5: CreateProduct(
+			id: "p5"
+			name: "Sunny pizza"
+			imgUrl: "https://cdn.pixabay.com/photo/2016/01/19/18/01/pizza-1150031_960_720.jpg"
+			price: 25.2
+			description: "Margerheta-style pizza topped with eggs and basil"
+			status: available
+			createdAt: { formatted: "2020-03-19T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-03-19T13:11:01.357Z" }
+		) {
+			id
+			name
+		}
+		p6: CreateProduct(
+			id: "p6"
+			name: "Pizza Cappriciosa"
+			imgUrl: "https://cdn.pixabay.com/photo/2016/04/21/22/50/pizza-1344720_960_720.jpg"
+			price: 21.8
+			description: "Salami and bacon pizza with blue cheeze"
+			status: available
+			createdAt: { formatted: "2020-03-19T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-03-19T13:11:01.357Z" }
+		) {
+			id
+			name
+		}
+		p7: CreateProduct(
+			id: "p7"
+			name: "Pizza Neopolitana"
+			imgUrl: "https://cdn.pixabay.com/photo/2018/04/11/03/13/food-3309418_960_720.jpg"
+			price: 17.0
+			description: "Vegitarian pizza with spicy flavour"
+			status: available
+			createdAt: { formatted: "2020-03-19T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-03-19T13:11:01.357Z" }
+		) {
+			id
+			name
+		}
+		p8: CreateProduct(
+			id: "p8"
+			name: "Spinach pizza"
+			imgUrl: "https://cdn.pixabay.com/photo/2016/06/08/00/03/pizza-1442945_960_720.jpg"
+			price: 19.9
+			description: "Spinatch pizza with sun-dried tomatoes"
+			status: available
+			createdAt: { formatted: "2020-03-19T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-03-19T13:11:01.357Z" }
+		) {
+			id
+			name
+		}
+		p9: CreateProduct(
+			id: "p9"
+			name: "Coca-cola"
+			imgUrl: "https://cdn.pixabay.com/photo/2017/02/25/23/12/coca-cola-2099000_960_720.jpg"
+			price: 3.0
+			description: "Coca-cola, bottle, 0.5l"
+			status: available
+			createdAt: { formatted: "2020-03-19T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-03-19T13:11:01.357Z" }
+		) {
+			id
+			name
+		}
+		p10: CreateProduct(
+			id: "p10"
+			name: "Fanta"
+			imgUrl: "https://cdn.pixabay.com/photo/2013/03/01/18/48/aluminum-87987_960_720.jpg"
+			price: 2.0
+			description: "Fanta, can, 0.3l"
+			status: available
+			createdAt: { formatted: "2020-03-19T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-03-19T13:11:01.357Z" }
+		) {
+			id
+			name
+		}
 
-    a1: AddBusinessCategories(from: { id: "b1" }, to: { name: "Beer" }) {
-      from {
-        id
-      }
-    }
-    a1a: AddBusinessCategories(from: { id: "b1" }, to: { name: "Brewery" }) {
-      from {
-        id
-      }
-    }
-    a2: AddBusinessCategories(from: { id: "b2" }, to: { name: "Beer" }) {
-      from {
-        id
-      }
-    }
-    a2a: AddBusinessCategories(from: { id: "b2" }, to: { name: "Brewery" }) {
-      from {
-        id
-      }
-    }
-    a3: AddBusinessCategories(from: { id: "b3" }, to: { name: "Restaurant" }) {
-      from {
-        id
-      }
-    }
-    a4: AddBusinessCategories(from: { id: "b3" }, to: { name: "Breakfast" }) {
-      from {
-        id
-      }
-    }
-    a5: AddBusinessCategories(from: { id: "b4" }, to: { name: "Coffee" }) {
-      from {
-        id
-      }
-    }
-    a5a: AddBusinessCategories(from: { id: "b4" }, to: { name: "Restaurant" }) {
-      from {
-        id
-      }
-    }
-    a5b: AddBusinessCategories(from: { id: "b4" }, to: { name: "Cafe" }) {
-      from {
-        id
-      }
-    }
-    a5c: AddBusinessCategories(from: { id: "b4" }, to: { name: "Deli" }) {
-      from {
-        id
-      }
-    }
-    a5d: AddBusinessCategories(from: { id: "b4" }, to: { name: "Breakfast" }) {
-      from {
-        id
-      }
-    }
-    a6: AddBusinessCategories(from: { id: "b5" }, to: { name: "Library" }) {
-      from {
-        id
-      }
-    }
-    a7: AddBusinessCategories(from: { id: "b6" }, to: { name: "Coffee" }) {
-      from {
-        id
-      }
-    }
-    a8: AddBusinessCategories(from: { id: "b7" }, to: { name: "Restaurant" }) {
-      from {
-        id
-      }
-    }
-    a8a: AddBusinessCategories(from: { id: "b7" }, to: { name: "Ramen" }) {
-      from {
-        id
-      }
-    }
-    a9: AddBusinessCategories(from: { id: "b8" }, to: { name: "Coffee" }) {
-      from {
-        id
-      }
-    }
-    a9a: AddBusinessCategories(from: { id: "b8" }, to: { name: "Breakfast" }) {
-      from {
-        id
-      }
-    }
-    a10: AddBusinessCategories(from: { id: "b9" }, to: { name: "Brewery" }) {
-      from {
-        id
-      }
-    }
-    a11: AddBusinessCategories(from: { id: "b10" }, to: { name: "Library" }) {
-      from {
-        id
-      }
-    }
+		apc1: AddProductCategories(from: { id: "p1" }, to: { name: "Pizza" }) {
+			from {
+				id
+			}
+		}
+		apc2: AddProductCategories(from: { id: "p2" }, to: { name: "Pizza" }) {
+			from {
+				id
+			}
+		}
+		apc3: AddProductCategories(from: { id: "p3" }, to: { name: "Pizza" }) {
+			from {
+				id
+			}
+		}
+		apc4: AddProductCategories(from: { id: "p4" }, to: { name: "Pizza" }) {
+			from {
+				id
+			}
+		}
+		apc5: AddProductCategories(from: { id: "p5" }, to: { name: "Pizza" }) {
+			from {
+				id
+			}
+		}
+		apc6: AddProductCategories(from: { id: "p6" }, to: { name: "Pizza" }) {
+			from {
+				id
+			}
+		}
+		apc7: AddProductCategories(from: { id: "p7" }, to: { name: "Pizza" }) {
+			from {
+				id
+			}
+		}
+		apc8: AddProductCategories(from: { id: "p8" }, to: { name: "Pizza" }) {
+			from {
+				id
+			}
+		}
+		apc9: AddProductCategories(
+			from: { id: "p9" }
+			to: { name: "Soft drink" }
+		) {
+			from {
+				id
+			}
+		}
+		apc10: AddProductCategories(
+			from: { id: "p10" }
+			to: { name: "Soft drink" }
+		) {
+			from {
+				id
+			}
+		}
 
-    r1: CreateReview(id: "r1", stars: 4, text: "Great IPA selection!", date: { formatted: "2016-01-03"}) {
-      id
-    }
-    ar1: AddUserReviews(from: { id: "u1" }, to: { id: "r1" }) {
-      from {
-        id
-      }
-    }
-    ab1: AddReviewBusiness(from: { id: "r1" }, to: { id: "b1" }) {
-      from {
-        id
-      }
-    }
+		c1: CreateCustomer(
+			id: "c1"
+			name: "Will Smith"
+			phone: "3234321234"
+			email: "will@example.com"
+			password: "somerandompass"
+			createdAt: { formatted: "2020-02-19T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-02-19T13:11:01.357Z" }
+		) {
+			id
+			name
+		}
 
-    r2: CreateReview(id: "r2", stars: 5, text: "", date: { formatted: "2016-07-14"}) {
-      id
-    }
-    ar2: AddUserReviews(from: { id: "u3" }, to: { id: "r2" }) {
-      from {
-        id
-      }
-    }
-    ab2: AddReviewBusiness(from: { id: "r2" }, to: { id: "b1" }) {
-      from {
-        id
-      }
-    }
+		a1: CreateCustomerAddress(
+			id: "a1"
+			street: "313 N 1st St W, apt.2M"
+			city: "Missoula"
+			state: "MT"
+			zip: "32342"
+			addressCategory: home
+		) {
+			id
+			street
+		}
 
-    r3: CreateReview(id: "r3", stars: 3, text: "", date: { formatted: "2018-09-10"}) {
-      id
-    }
-    ar3: AddUserReviews(from: { id: "u4" }, to: { id: "r3" }) {
-      from {
-        id
-      }
-    }
-    ab3: AddReviewBusiness(from: { id: "r3" }, to: { id: "b2" }) {
-      from {
-        id
-      }
-    }
+		aca1: AddCustomerAddresses(from: { id: "c1" }, to: { id: "a1" }) {
+			from {
+				id
+			}
+		}
 
-    r4: CreateReview(id: "r4", stars: 5, text: "", date: { formatted: "2017-11-13"}) {
-      id
-    }
-    ar4: AddUserReviews(from: { id: "u3" }, to: { id: "r4" }) {
-      from {
-        id
-      }
-    }
-    ab4: AddReviewBusiness(from: { id: "r4" }, to: { id: "b3" }) {
-      from {
-        id
-      }
-    }
+		# Create order 1
+		o1: CreateOrder(
+			id: "o1"
+			details: "Add more pepperoni"
+			status: delivered
+			createdAt: { formatted: "2020-02-19T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-02-19T13:11:01.357Z" }
+		) {
+			id
+			status
+		}
+		oi1: CreateOrderItem(
+			id: "oi1"
+			name: "Pizza Margerheta"
+			price: 20.2
+			quantity: 2
+		) {
+			name
+		}
+		oi2: CreateOrderItem(
+			id: "oi2"
+			name: "Pizza Neopolitana"
+			price: 17.0
+			quantity: 1
+		) {
+			name
+		}
+		aooi1: AddOrderOrderItems(from: { id: "o1" }, to: { id: "oi1" }) {
+			from {
+				id
+			}
+		}
+		aoip1: AddOrderItemProduct(from: { id: "oi1" }, to: { id: "p1" }) {
+			from {
+				id
+			}
+		}
+		aooi2: AddOrderOrderItems(from: { id: "o1" }, to: { id: "oi2" }) {
+			from {
+				id
+			}
+		}
+		aoip2: AddOrderItemProduct(from: { id: "oi1" }, to: { id: "p7" }) {
+			from {
+				id
+			}
+		}
+		aoc1: AddOrderCustomer(from: { id: "c1" }, to: { id: "o1" }) {
+			from {
+				id
+			}
+		}
 
-    r5: CreateReview(
-      id: "r5"
-      stars: 4
-      text: "Best breakfast sandwich at the Farmer's Market. Always get the works."
-      date: { formatted: "2018-01-03"}
-    ) {
-      id
-    }
-    ar5: AddUserReviews(from: { id: "u1" }, to: { id: "r5" }) {
-      from {
-        id
-      }
-    }
-    ab5: AddReviewBusiness(from: { id: "r5" }, to: { id: "b3" }) {
-      from {
-        id
-      }
-    }
+		c2: CreateCustomer(
+			id: "c2"
+			name: "Jenny Parker"
+			phone: "3237751234"
+			email: "jenny@bla.com"
+			password: "somerandompass"
+			createdAt: { formatted: "2020-02-29T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-02-29T13:11:01.357Z" }
+		) {
+			id
+			name
+		}
 
-    r6: CreateReview(id: "r6", stars: 4, text: "", date: { formatted: "2018-03-24"}) {
-      id
-    }
-    ar6: AddUserReviews(from: { id: "u2" }, to: { id: "r6" }) {
-      from {
-        id
-      }
-    }
-    ab6: AddReviewBusiness(from: { id: "r6" }, to: { id: "b4" }) {
-      from {
-        id
-      }
-    }
+		a2: CreateCustomerAddress(
+			id: "a2"
+			street: "Food Truck - Farmers Market"
+			city: "Missoula"
+			state: "MT"
+			zip: "32387"
+			addressCategory: office
+		) {
+			id
+			street
+		}
 
-    r7: CreateReview(
-      id: "r7"
-      stars: 3
-      text: "Not a great selection of books, but fortunately the inter-library loan system is good. Wifi is quite slow. Not many comfortable places to site and read. Looking forward to the new building across the street in 2020!"
-      date: { formatted: "2015-08-29"}
-    ) {
-      id
-    }
-    ar7: AddUserReviews(from: { id: "u1" }, to: { id: "r7" }) {
-      from {
-        id
-      }
-    }
-    ab7: AddReviewBusiness(from: { id: "r7" }, to: { id: "b5" }) {
-      from {
-        id
-      }
-    }
+		aca2: AddCustomerAddresses(from: { id: "c2" }, to: { id: "a2" }) {
+			from {
+				id
+			}
+		}
 
-    r8: CreateReview(id: "r8", stars: 5, text: "", date: { formatted: "2018-08-11"}) {
-      id
-    }
-    ar8: AddUserReviews(from: { id: "u4" }, to: { id: "r8" }) {
-      from {
-        id
-      }
-    }
-    ab8: AddReviewBusiness(from: { id: "r8" }, to: { id: "b6" }) {
-      from {
-        id
-      }
-    }
-
-    r9: CreateReview(id: "r9", stars: 5, text: "", date: { formatted: "2016-11-21"}) {
-      id
-    }
-    ar9: AddUserReviews(from: { id: "u3" }, to: { id: "r9" }) {
-      from {
-        id
-      }
-    }
-    ab9: AddReviewBusiness(from: { id: "r9" }, to: { id: "b7" }) {
-      from {
-        id
-      }
-    }
-
-    r10: CreateReview(id: "r10", stars: 4, text: "", date: { formatted: "2015-12-15"}) {
-      id
-    }
-    ar10: AddUserReviews(from: { id: "u2" }, to: { id: "r10" }) {
-      from {
-        id
-      }
-    }
-    ab10: AddReviewBusiness(from: { id: "r10" }, to: { id: "b2" }) {
-      from {
-        id
-      }
-    }
-  }
+		# Create order 2
+		o2: CreateOrder(
+			id: "o2"
+			details: "Extra napkins"
+			status: delivered
+			createdAt: { formatted: "2020-02-29T13:11:01.357Z" }
+			updatedAt: { formatted: "2020-02-29T13:11:01.357Z" }
+		) {
+			id
+			status
+		}
+		oi3: CreateOrderItem(
+			id: "oi3"
+			name: "Sunny pizza"
+			price: 25.2
+			quantity: 2
+		) {
+			name
+		}
+		aooi3: AddOrderOrderItems(from: { id: "o2" }, to: { id: "oi3" }) {
+			from {
+				id
+			}
+		}
+		aoip3: AddOrderItemProduct(from: { id: "oi3" }, to: { id: "p5" }) {
+			from {
+				id
+			}
+		}
+		oi4: CreateOrderItem(
+			id: "oi4"
+			name: "Pizza Neopolitana"
+			price: 17.0
+			quantity: 1
+		) {
+			name
+		}
+		aooi4: AddOrderOrderItems(from: { id: "o2" }, to: { id: "oi4" }) {
+			from {
+				id
+			}
+		}
+		aoip4: AddOrderItemProduct(from: { id: "oi4" }, to: { id: "p7" }) {
+			from {
+				id
+			}
+		}
+		aoc2: AddOrderCustomer(from: { id: "c2" }, to: { id: "o1" }) {
+			from {
+				id
+			}
+		}
+	}
 `;
