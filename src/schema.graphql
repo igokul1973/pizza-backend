@@ -39,6 +39,7 @@ enum AddressCategory {
 type Product {
 	id: ID!
 	name: String!
+	imgUrl: String!
 	categories: [ProductCategory]!
 		@relation(name: "HAS_PRODUCT_CATEGORIES", direction: "OUT")
 	price: Float!
