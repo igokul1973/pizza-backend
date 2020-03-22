@@ -1,12 +1,9 @@
 export default /* GraphQL */ `
 	mutation {
-		cucfpc: CreateUniqueConstraintForProductCategory {
+		pc1: CreateProductCategory(name: "pizza") {
 			name
 		}
-		pc1: CreateProductCategory(name: "Pizza") {
-			name
-		}
-		pc2: CreateProductCategory(name: "Soft drink") {
+		pc2: CreateProductCategory(name: "soft drink") {
 			name
 		}
 

@@ -7,13 +7,6 @@ type Query {
 		)
 }
 
-type Mutation {
-	CreateUniqueConstraintForProductCategory: [ProductCategory]
-		@cypher(
-			statement: "CREATE CONSTRAINT ON (e:ProductCategory) ASSERT e.name IS UNIQUE"
-		)
-}
-
 type Customer {
 	id: ID!
 	name: String!
