@@ -49,7 +49,7 @@ const server = new ApolloServer({
 });
 
 // Specify port and path for GraphQL endpoint
-const port = process.env.GRAPHQL_LISTEN_PORT || 4001;
+const port = process.env.PORT || 4001;
 const path = "/graphql";
 
 /*
