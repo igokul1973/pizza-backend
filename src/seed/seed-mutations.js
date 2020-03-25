@@ -341,7 +341,7 @@ export default /* GraphQL */ `
 				id
 			}
 		}
-		aoc2: AddOrderCustomer(from: { id: "c2" }, to: { id: "o1" }) {
+		aoc2: AddOrderCustomer(from: { id: "c2" }, to: { id: "o2" }) {
 			from {
 				id
 			}
