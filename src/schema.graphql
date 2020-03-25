@@ -45,7 +45,6 @@ type Product {
 	price: Float!
 	description: String!
 	status: ProductStatusEnum!
-	orderItems: OrderItem @relation(name: "HAS_PRODUCT", direction: "IN")
 	createdAt: DateTime!
 	updatedAt: DateTime!
 }
@@ -79,10 +78,10 @@ enum OrderStatusEnum {
 
 type OrderItem {
 	id: ID!
-	product: Product! @relation(name: "HAS_PRODUCT", direction: "OUT")
 	name: String! # Copy from the product on order item's creation
 	price: Float! # Copy from the product on order item's creation
 	quantity: Int!
+    productId: String!
 	# total - calculable field
 	total: Float
 		@cypher(statement: "MATCH (this) RETURN this.quantity * this.price")

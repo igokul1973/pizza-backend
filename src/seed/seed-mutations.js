@@ -242,6 +242,7 @@ export default /* GraphQL */ `
 			name: "Pizza Margerheta"
 			price: 20.2
 			quantity: 2
+			productId: "p1"
 		) {
 			name
 		}
@@ -249,7 +250,8 @@ export default /* GraphQL */ `
 			id: "oi2"
 			name: "Pizza Neopolitana"
 			price: 17.0
-			quantity: 1
+			quantity: 1,
+			productId: "p7"
 		) {
 			name
 		}
@@ -258,17 +260,7 @@ export default /* GraphQL */ `
 				id
 			}
 		}
-		aoip1: AddOrderItemProduct(from: { id: "oi1" }, to: { id: "p1" }) {
-			from {
-				id
-			}
-		}
 		aooi2: AddOrderOrderItems(from: { id: "o1" }, to: { id: "oi2" }) {
-			from {
-				id
-			}
-		}
-		aoip2: AddOrderItemProduct(from: { id: "oi1" }, to: { id: "p7" }) {
 			from {
 				id
 			}
@@ -326,15 +318,11 @@ export default /* GraphQL */ `
 			name: "Sunny pizza"
 			price: 25.2
 			quantity: 2
+			productId: "p5"
 		) {
 			name
 		}
 		aooi3: AddOrderOrderItems(from: { id: "o2" }, to: { id: "oi3" }) {
-			from {
-				id
-			}
-		}
-		aoip3: AddOrderItemProduct(from: { id: "oi3" }, to: { id: "p5" }) {
 			from {
 				id
 			}
@@ -344,15 +332,11 @@ export default /* GraphQL */ `
 			name: "Pizza Neopolitana"
 			price: 17.0
 			quantity: 1
+			productId: "p7"
 		) {
 			name
 		}
 		aooi4: AddOrderOrderItems(from: { id: "o2" }, to: { id: "oi4" }) {
-			from {
-				id
-			}
-		}
-		aoip4: AddOrderItemProduct(from: { id: "oi4" }, to: { id: "p7" }) {
 			from {
 				id
 			}
