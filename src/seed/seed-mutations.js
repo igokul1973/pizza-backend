@@ -138,49 +138,49 @@ export default /* GraphQL */ `
 			name
 		}
 
-		apc1: AddProductCategories(from: { id: "p1" }, to: { name: "Pizza" }) {
+		apc1: AddProductCategories(from: { id: "p1" }, to: { name: "pizza" }) {
 			from {
 				id
 			}
 		}
-		apc2: AddProductCategories(from: { id: "p2" }, to: { name: "Pizza" }) {
+		apc2: AddProductCategories(from: { id: "p2" }, to: { name: "pizza" }) {
 			from {
 				id
 			}
 		}
-		apc3: AddProductCategories(from: { id: "p3" }, to: { name: "Pizza" }) {
+		apc3: AddProductCategories(from: { id: "p3" }, to: { name: "pizza" }) {
 			from {
 				id
 			}
 		}
-		apc4: AddProductCategories(from: { id: "p4" }, to: { name: "Pizza" }) {
+		apc4: AddProductCategories(from: { id: "p4" }, to: { name: "pizza" }) {
 			from {
 				id
 			}
 		}
-		apc5: AddProductCategories(from: { id: "p5" }, to: { name: "Pizza" }) {
+		apc5: AddProductCategories(from: { id: "p5" }, to: { name: "pizza" }) {
 			from {
 				id
 			}
 		}
-		apc6: AddProductCategories(from: { id: "p6" }, to: { name: "Pizza" }) {
+		apc6: AddProductCategories(from: { id: "p6" }, to: { name: "pizza" }) {
 			from {
 				id
 			}
 		}
-		apc7: AddProductCategories(from: { id: "p7" }, to: { name: "Pizza" }) {
+		apc7: AddProductCategories(from: { id: "p7" }, to: { name: "pizza" }) {
 			from {
 				id
 			}
 		}
-		apc8: AddProductCategories(from: { id: "p8" }, to: { name: "Pizza" }) {
+		apc8: AddProductCategories(from: { id: "p8" }, to: { name: "pizza" }) {
 			from {
 				id
 			}
 		}
 		apc9: AddProductCategories(
 			from: { id: "p9" }
-			to: { name: "Soft drink" }
+			to: { name: "soft drink" }
 		) {
 			from {
 				id
@@ -188,7 +188,7 @@ export default /* GraphQL */ `
 		}
 		apc10: AddProductCategories(
 			from: { id: "p10" }
-			to: { name: "Soft drink" }
+			to: { name: "soft drink" }
 		) {
 			from {
 				id
