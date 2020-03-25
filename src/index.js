@@ -3,6 +3,7 @@ import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import { v1 as neo4j } from "neo4j-driver";
 import { makeAugmentedSchema } from "neo4j-graphql-js";
+import cors from 'cors';
 import dotenv from "dotenv";
 
 // set environment variables from ../.env
@@ -45,7 +46,7 @@ const server = new ApolloServer({
 	context: { driver },
 	schema: schema,
 	introspection: true,
-	playground: true
+	playground: true,
 });
 
 // Specify port and path for GraphQL endpoint
@@ -57,6 +58,11 @@ const path = "/graphql";
  * This also also allows us to specify a path for the GraphQL endpoint
  */
 server.applyMiddleware({ app, path });
+
+/*
+ * Allow anyone, for now, to connect with CORS requests
+ */
+app.use(cors());
 
 app.listen({ port, path }, () => {
 	console.log(`GraphQL server ready at http://localhost:${port}${path}`);
