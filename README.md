@@ -1,18 +1,23 @@
-# GRANDstack Starter - GraphQL API
+# Pizza App - GraphQL API
 
+This app is a result of a 1-week test assignment I made for one of the companies. It represents a back-end for a Pizza store frontend where a user can make an order.
+
+The app uses the [GRAND-stack](https://grandstack.io/) and specifically neo4j-graphql.js package that translates the GraphQL schema into a set of Cypher requests upon the application initialization as well as deploys in development environment the GUI for making the test requests. 
+
+For your convenience, this app is hosted at Heroku at https://pizza-delivery-business-back.herokuapp.com
 
 ## Quick Start
 
 Install dependencies:
 
 ```
-npm install
+yarn install
 ```
 
 Start the GraphQL service:
 
 ```
-npm start
+yarn start
 ```
 
 This will start the GraphQL service (by default on localhost:4000) where you can issue GraphQL requests or access GraphQL Playground in the browser:
@@ -50,5 +55,5 @@ to deploy your GraphQL service on Zeit Now. Once deployed you'll be given a fres
 Optionally you can seed the GraphQL service by executing mutations that will write sample data to the database:
 
 ```
-npm run seedDb
+yarn run seedDb
 ```
